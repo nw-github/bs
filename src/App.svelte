@@ -7,7 +7,7 @@
 
   const dict = {
     "Countered By": COUNTERED_BY,
-    "Counters": COUNTERS,
+    Counters: COUNTERS,
   };
 
   let query = "";
@@ -24,45 +24,48 @@
     </select>
   </div>
 
-  <table>
+  <div class="data">
     {#each dict[currentMode] as [brawler, counters]}
-      {#if brawler.toLowerCase().includes(query.toLowerCase())}
-        <tr>
-          <td class="container">
-            <Image {brawler} />
-            <div class="bottom-left">{brawler}</div>
-          </td>
-          <td class="counters">
-            {#each counters as counter}
-              <Image brawler={counter} />
-            {/each}
-          </td>
-        </tr>
+      {#if counters.length && brawler.toLowerCase().includes(query.toLowerCase())}
+        <div><Image {brawler} /></div>
+        <div class="counters">
+          {#each counters as counter}
+            <Image brawler={counter} />
+          {/each}
+        </div>
       {/if}
     {/each}
-  </table>
+  </div>
 </main>
 
 <style>
+  .header {
+    padding-bottom: 2em;
+  }
+
+  .data {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+  }
+
   .counters {
     display: flex;
-    padding-left: 100px;
-  }
-
-  .container {
-    position: relative;
-  }
-
-  .bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-    opacity: 0;
+    overflow: scroll;
+    width: 100%;
+    align-items: center;
+    padding-left: 2em;
   }
 
   .searchbox {
-    border-radius: 5px;
-    padding: 5px 5px;
-    width: 300px;
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    min-width: 30%;
+    max-width: 44%;
+  }
+
+  select {
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
   }
 </style>

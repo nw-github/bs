@@ -13,13 +13,12 @@
 <style>
   h1,
   img {
-    width: 200px;
-    height: 200px;
+    width: 7em;
     padding: 2px 5px;
   }
 
   img {
-    border-radius: 20px;
+    border-radius: 33%;
   }
 
   h1 {

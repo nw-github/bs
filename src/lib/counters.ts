@@ -1,4 +1,4 @@
-import counters from "./counters.json";
+import counters from "../assets/counters.json";
 
 export const IMAGES: Record<string, string> = {
   "8Bit": "8Bit.png",
