@@ -1,15 +1,31 @@
 <script lang="ts">
   import Image from "./lib/Image.svelte";
-  import { COUNTERS } from "./lib/counters";
+  import { COUNTERED_BY, COUNTERS } from "./lib/counters";
+
+  const modes = ["Countered By", "Counters"] as const;
+  type Mode = (typeof modes)[number];
+
+  const dict = {
+    "Countered By": COUNTERED_BY,
+    "Counters": COUNTERS,
+  };
 
   let query = "";
+  let currentMode: Mode = "Countered By";
 </script>
 
 <main>
-  <input class="searchbox" type="text" placeholder="Search..." bind:value={query} />
+  <div class="header">
+    <input class="searchbox" type="text" placeholder="Search..." bind:value={query} />
+    <select name="mode" id="mode" bind:value={currentMode}>
+      {#each modes as mode}
+        <option value={mode}>{mode}</option>
+      {/each}
+    </select>
+  </div>
 
   <table>
-    {#each COUNTERS as [brawler, counters]}
+    {#each dict[currentMode] as [brawler, counters]}
       {#if brawler.toLowerCase().includes(query.toLowerCase())}
         <tr>
           <td class="container">

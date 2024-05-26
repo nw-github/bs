@@ -18,6 +18,10 @@
     padding: 2px 5px;
   }
 
+  img {
+    border-radius: 20px;
+  }
+
   h1 {
     text-align: center;
     display: inline;

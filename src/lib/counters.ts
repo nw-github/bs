@@ -83,4 +83,11 @@ export const IMAGES: Record<string, string> = {
   Willow: "Willow.webp",
 };
 
-export const COUNTERS = Object.entries(counters);
+export const COUNTERED_BY = Object.entries(counters);
+
+export const COUNTERS = COUNTERED_BY.map(([src]) => {
+  return [src, COUNTERED_BY.filter(([_, b]) => b.includes(src)).map((s) => s[0])] as [
+    string,
+    string[],
+  ];
+});
