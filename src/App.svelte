@@ -51,7 +51,7 @@
 
   .counters {
     display: flex;
-    overflow: scroll;
+    overflow: auto;
     width: 100%;
     align-items: center;
     padding-left: 2em;
